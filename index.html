@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario Heladería</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#ffe6f0,#fff);
+    padding:15px;
+    margin:0;
+}
+
+h1{
+    text-align:center;
+    color:#ff2a8a;
+}
+
+.contenedor{
+    max-width:1000px;
+    margin:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+th, td{
+    border-bottom:1px solid #eee;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#ff4fa3;
+    color:white;
+}
+
+input{
+    width:80px;
+    padding:6px;
+    text-align:center;
+    border:1px solid #ddd;
+    border-radius:5px;
+}
+
+.total{
+    margin-top:15px;
+    font-size:18px;
+    font-weight:bold;
+    text-align:right;
+    color:#333;
+}
+
+.botones{
+    margin-top:20px;
+    text-align:center;
+}
+
+button{
+    padding:10px 15px;
+    margin:5px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn-limpiar{
+    background:#ff4fa3;
+    color:white;
+}
+
+.btn-exportar{
+    background:#4CAF50;
+    color:white;
+}
+
+button:hover{
+    opacity:0.85;
+}
+
+/* Responsive */
+@media (max-width:600px){
+    th, td{
+        font-size:14px;
+        padding:6px;
+    }
+    input{
+        width:60px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<h1>🍦 Inventario de Helados</h1>
+
+<table id="tabla">
+<thead>
+<tr>
+<th>Producto</th>
+<th>Cantidad</th>
+</tr>
+</thead>
+<tbody>
+
+<tr><td>Paleta Fresa</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Paleta Chocolate</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Paleta Lucuma</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Chispeka Vainilla</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Chispeka Menta</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Flor de jamaica</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Chiclemon</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Sacra Piña</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Sacra Fresa</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Sacra Guanabano</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Sacra Maracuya</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Sacra Mango</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Rellenita</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Coco</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Cafe</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Casanova</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Supay Chocolate</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Supay Lucuma</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Algarrobina</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Ron con pasas</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Chancaysito</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Bisabor</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Frambuco</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Apu Chocolate</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Apu Lucuma</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Yanacha</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Vasito</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Aguaje</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+<tr><td>Litros</td><td><input type="number" oninput="calcularTotal()"></td></tr>
+
+</tbody>
+</table>
+
+<div class="total">
+Total General: <span id="total">0</span> Jabas
+</div>
+
+<h1>📦 Cálculo de Jabas</h1>
+
+<table>
+<tr>
+<th>Unidades</th>
+<th>Jabas x3</th>
+<th>Total</th>
+</tr>
+<tr>
+<td><input type="number" id="uni" oninput="calcularJabas()"></td>
+<td><input type="number" id="j3" oninput="calcularJabas()"></td>
+<td><span id="resultado">0</span></td>
+</tr>
+</table>
+
+<div class="total">
+Total Jabas: <span id="totalJabas">0</span>
+</div>
+
+<div class="botones">
+<button class="btn-limpiar" onclick="limpiarTodo()">Limpiar</button>
+<button class="btn-exportar" onclick="exportarExcel()">Exportar Excel</button>
+</div>
+
+</div>
+
+<script>
+function calcularTotal(){
+    let inputs = document.querySelectorAll("#tabla input");
+    let total = 0;
+    inputs.forEach(input=>{
+        total += parseInt(input.value) || 0;
+    });
+    document.getElementById("total").innerText = total;
+}
+
+function calcularJabas(){
+    let unidades = parseInt(document.getElementById("uni").value) || 0;
+    let jabas3 = parseInt(document.getElementById("j3").value) || 0;
+    let total = unidades + (jabas3 * 3);
+    document.getElementById("resultado").innerText = total;
+    document.getElementById("totalJabas").innerText = total;
+}
+
+function limpiarTodo(){
+    document.querySelectorAll("input").forEach(input=> input.value="");
+    document.getElementById("total").innerText="0";
+    document.getElementById("resultado").innerText="0";
+    document.getElementById("totalJabas").innerText="0";
+}
+
+function exportarExcel(){
+    let datos = "Producto,Cantidad\n";
+    document.querySelectorAll("#tabla tbody tr").forEach(fila=>{
+        let producto = fila.cells[0].innerText;
+        let cantidad = fila.cells[1].querySelector("input").value || 0;
+        datos += producto + "," + cantidad + "\n";
+    });
+
+    datos += "\nTotal General," + document.getElementById("total").innerText;
+
+    let blob = new Blob([datos], {type:"text/csv"});
+    let url = window.URL.createObjectURL(blob);
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "Inventario_Heladeria.csv";
+    a.click();
+}
+</script>
+
+</body>
+</html>
