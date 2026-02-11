@@ -41,10 +41,12 @@ th{
 }
 
 .palitos{
-    font-size:16px;
-    height:30px;
-    overflow:hidden;
-    white-space:nowrap;
+    font-size:15px;
+    min-height:35px;
+    max-height:100px;
+    overflow-y:auto;
+    white-space:pre-line;
+    word-break:break-all;
 }
 
 button{
@@ -132,7 +134,13 @@ Total Jabas: <span id="totalJabas">0</span>
 <script>
 
 let productos = [
-"Paleta Fresa","Paleta Chocolate","Paleta Lucuma","Chispeka Vainilla","Chispeka Menta","Flor de jamaica","Chiclemon","Sacra Piña","Sacra Fresa","Sacra Guanabano","Sacra Maracuya","Sacra Mango","Rellenita","Coco","Cafe","Casanova","Supay Chocolate","Supay Lucuma","Algarrobina","Ron con pasas","Chancaysito","Bisabor","Frambuco","Apu Chocolate","Apu Lucuma","Yanacha","Vasito","Aguaje","Litros"
+"Paleta Fresa","Paleta Chocolate","Paleta Lucuma",
+"Chispeka Vainilla","Chispeka Menta","Flor de jamaica",
+"Chiclemon","Sacra Piña","Sacra Fresa","Sacra Guanabano",
+"Sacra Maracuya","Sacra Mango","Rellenita","Coco","Cafe",
+"Casanova","Supay Chocolate","Supay Lucuma","Algarrobina",
+"Ron con pasas","Chancaysito","Bisabor","Frambuco",
+"Apu Chocolate","Apu Lucuma","Yanacha","Vasito","Aguaje","Litros"
 ];
 
 let tabla = document.querySelector("#tabla tbody");
@@ -165,16 +173,21 @@ function cambiar(index, valor){
 
 function dibujarPalitos(index){
     let cantidad = contadores[index];
-    let grupos = Math.floor(cantidad / 5);
-    let resto = cantidad % 5;
     let texto = "";
+    let grupo = 0;
 
-    for(let i=0;i<grupos;i++){
-        texto += "||||/ ";
-    }
-
-    for(let i=0;i<resto;i++){
+    for(let i=1; i<=cantidad; i++){
         texto += "|";
+        grupo++;
+
+        if(grupo === 5){
+            texto += "/ ";
+            grupo = 0;
+        }
+
+        if(i % 10 === 0){
+            texto += "\n";
+        }
     }
 
     document.getElementById("pal"+index).innerText = texto;
