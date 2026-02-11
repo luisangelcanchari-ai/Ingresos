@@ -43,14 +43,14 @@ th{
 .palitos{
     font-size:15px;
     min-height:35px;
-    max-height:100px;
+    max-height:120px;
     overflow-y:auto;
     white-space:pre-line;
-    word-break:break-all;
+    text-align:left;
 }
 
 button{
-    padding:5px 10px;
+    padding:6px 10px;
     margin:2px;
     border:none;
     border-radius:6px;
@@ -173,21 +173,16 @@ function cambiar(index, valor){
 
 function dibujarPalitos(index){
     let cantidad = contadores[index];
+    let grupos = Math.floor(cantidad / 5);
+    let resto = cantidad % 5;
     let texto = "";
-    let grupo = 0;
 
-    for(let i=1; i<=cantidad; i++){
-        texto += "|";
-        grupo++;
+    for(let i = 0; i < grupos; i++){
+        texto += "||||/ \n";
+    }
 
-        if(grupo === 5){
-            texto += "/ ";
-            grupo = 0;
-        }
-
-        if(i % 10 === 0){
-            texto += "\n";
-        }
+    if(resto > 0){
+        texto += "|".repeat(resto);
     }
 
     document.getElementById("pal"+index).innerText = texto;
@@ -229,8 +224,8 @@ function exportarExcel(){
     datos += "\nTotal General," + document.getElementById("totalGeneral").innerText;
     datos += "\nTotal Jabas," + document.getElementById("totalJabas").innerText;
 
-    let blob = new Blob([datos], {type:"text/csv"});
-    let url = window.URL.createObjectURL(blob);
+    let blob = new Blob([datos], {type:"text/csv;charset=utf-8;"});
+    let url = URL.createObjectURL(blob);
     let a = document.createElement("a");
     a.href = url;
     a.download = "Reporte_Heladeria.csv";
