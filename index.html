@@ -13,11 +13,14 @@ body{
     margin:0;
 }
 
+/* TITULO */
 h1{
     text-align:center;
     color:#ff2a8a;
+    font-size:26px;
 }
 
+/* TABLA */
 table{
     width:100%;
     border-collapse:collapse;
@@ -30,32 +33,43 @@ table{
 }
 
 th, td{
-    padding:8px;
+    padding:10px;
     text-align:center;
     border-bottom:1px solid #eee;
+    font-size:16px;
 }
 
 th{
     background:#ff4fa3;
     color:white;
+    font-size:17px;
 }
 
+/* PALITOS */
 .palitos{
-    font-size:15px;
-    min-height:35px;
-    max-height:120px;
+    font-size:18px;
+    min-height:40px;
+    max-height:140px;
     overflow-y:auto;
     white-space:pre-line;
     text-align:left;
 }
 
+/* NUMERO DE CONTEO */
+[id^="num"]{
+    font-size:18px;
+    font-weight:bold;
+}
+
+/* BOTONES */
 button{
-    padding:6px 10px;
-    margin:2px;
+    padding:8px 12px;
+    margin:3px;
     border:none;
     border-radius:6px;
     cursor:pointer;
     font-weight:bold;
+    font-size:15px;
 }
 
 .btn-mas{ background:#4CAF50; color:white;}
@@ -65,7 +79,7 @@ button{
 
 .total{
     margin-top:15px;
-    font-size:18px;
+    font-size:19px;
     font-weight:bold;
     text-align:right;
 }
@@ -76,15 +90,19 @@ button{
 }
 
 input{
-    width:80px;
-    padding:6px;
+    width:90px;
+    padding:8px;
     text-align:center;
     border:1px solid #ddd;
     border-radius:5px;
+    font-size:16px;
 }
 
+/* RESPONSIVE */
 @media (max-width:600px){
-    th, td{ font-size:13px; }
+    th, td{ font-size:17px; }
+    h1{ font-size:24px; }
+    button{ font-size:16px; padding:10px; }
 }
 </style>
 </head>
@@ -140,7 +158,8 @@ let productos = [
 "Sacra Maracuya","Sacra Mango","Rellenita","Coco","Cafe",
 "Casanova","Supay Chocolate","Supay Lucuma","Algarrobina",
 "Ron con pasas","Chancaysito","Bisabor","Frambuco",
-"Apu Chocolate","Apu Lucuma","Yanacha","Vasito","Aguaje","Litros"
+"Apu Chocolate","Apu Lucuma","Yanacha","Vasito","Aguaje","Litro de chocolate","Litro de Algarrobina"
+,"Litor de Ron con Pasas","Litro de Tricolor","Litro de Chocochip"
 ];
 
 let tabla = document.querySelector("#tabla tbody");
